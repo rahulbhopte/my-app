@@ -5,6 +5,7 @@ import {
   } from "@mui/icons-material";
 import { Link } from "react-router-dom";
   import styled from "styled-components";
+  import { Card } from "react-bootstrap";
   
   const Info = styled.div`
     opacity: 0;
@@ -26,7 +27,7 @@ import { Link } from "react-router-dom";
     flex: 1;
     margin: 5px;
     min-width: 280px;
-    height: 350px;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,7 +48,7 @@ import { Link } from "react-router-dom";
   `;
   
   const Image = styled.img`
-    height: 75%;
+    height: 300px;
     z-index: 2;
   `;
   
@@ -69,25 +70,40 @@ import { Link } from "react-router-dom";
   
   const Product = ({ item }) => {
     return (
+       <>
       <Container>
-        <Circle />
-        <Image src={item.img} />
-        <Info>
-          <Icon>
-            <Link to="/cart">
-            <ShoppingCartOutlined />
-            </Link>
-          </Icon>
-          <Icon>
-            <Link to="/product">
-            <SearchOutlined />
-            </Link>
-          </Icon>
-          <Icon>
-            <FavoriteBorderOutlined />
-          </Icon>
-        </Info>
-      </Container>
+      <Card style={{ width: '18rem' }}>
+      <Image src={item.img} />
+      <Circle />
+           {/* <Image src={item.img} /> */}
+         <Info>
+           <Icon>
+             <Link to="/cart">
+             <ShoppingCartOutlined />
+             </Link>
+           </Icon>
+           <Icon>
+             <Link to="/product">
+             <SearchOutlined />
+             </Link>
+           </Icon>
+           <Icon>
+             <FavoriteBorderOutlined />
+           </Icon>
+         </Info>
+      <Card.Body>
+        <Card.Title>{item.name}</Card.Title>
+        <Card.Text>
+          <span style={{color:"darkGreen"}}>{item.price}</span> <span style={{color:"red"}}>{item.discount}</span>
+        </Card.Text>
+        
+      </Card.Body>
+      
+    </Card>
+       </Container>
+      
+      </>
+      
     );
   };
   

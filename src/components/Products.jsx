@@ -1,6 +1,10 @@
 import styled from "styled-components";
-import { popularProducts } from "../data";
+import { KidsProducts, popularProducts } from "../data";
+import GirlSection from "./GirlSection";
+import ManSection from "./ManSeaction";
 import Product from "./Product";
+import { BoysProducts } from "../data";
+import ChildrenSection from "./ChildrenSection";
 
 
 const Container = styled.div`
@@ -13,11 +17,26 @@ const Container = styled.div`
 
 const Products = () => {
   return (
+    <>
     <Container>
+    <GirlSection/>
       {popularProducts.map((item) => (
         <Product item={item} key={item.id} />
       ))}
     </Container>
+    <Container>
+    <ManSection/>
+      {BoysProducts.map((item) => (
+        <Product item={item} key={item.id} />
+      ))}
+    </Container>
+    <Container>
+    <ChildrenSection/>
+      {KidsProducts.map((item) => (
+        <Product item={item} key={item.id} />
+      ))}
+    </Container>
+    </>
   );
 };
 
